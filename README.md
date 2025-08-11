@@ -62,6 +62,7 @@ npm start
 # yarn && yarn start
 ```
 ## 📂 Folder Structure
+```plain text
 src/
 ├─ api/
 │   └── productsApi.ts         # API calls to mock product endpoints
@@ -81,7 +82,7 @@ src/
 └─ index.css                   # App-wide styles
 
 ---
-
+```
 ## 🛠 Technologies
 - **React (TypeScript)**
 - **Redux Toolkit**
