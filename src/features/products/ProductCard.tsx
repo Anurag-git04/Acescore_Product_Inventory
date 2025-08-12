@@ -8,14 +8,16 @@ interface Props {
 
 export default function ProductCard({ product, onDelete, onEdit }: Props) {
   return (
-    <div style={{ border: "1px solid #ddd", padding: 12, borderRadius: 8 }}>
-      <img src={product.image} alt={product.title} style={{ width: "100%", height: 160, objectFit: "contain" }} />
-      <h4 style={{ fontSize: 14, margin: "8px 0" }}>{product.title}</h4>
-      <p style={{ margin: 4 }}>₹{product.price}</p>
-      <p style={{ margin: 4 }}>{product.rating?.count ? "In Stock" : "Out of stock"}</p>
-      <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-        <button onClick={onEdit} className="btn btn-dark">Edit</button>
-        <button onClick={onDelete} className="btn btn-secondary">Delete</button>
+    <div className="card h-100">
+      <img src={product.image} className="card-img-top" alt={product.title} style={{ height: 160, objectFit: "contain" }} />
+      <div className="card-body d-flex flex-column">
+        <h6 className="card-title">{product.title}</h6>
+        <p className="mb-1">₹{product.price}</p>
+        <p className="text-muted small mb-2">{product.category}</p>
+        <div className="mt-auto d-flex gap-2">
+          <button className="btn btn-sm btn-outline-primary" onClick={onEdit}>Edit</button>
+          <button className="btn btn-sm btn-outline-danger" onClick={onDelete}>Delete</button>
+        </div>
       </div>
     </div>
   );

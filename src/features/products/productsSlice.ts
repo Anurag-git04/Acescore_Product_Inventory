@@ -45,17 +45,26 @@ export const addProduct = createAsyncThunk<Product, Product, { rejectValue: stri
   }
 );
 
-export const updateProduct = createAsyncThunk<Product, { id: number; product: Product }, { rejectValue: string }>(
+export const updateProduct = createAsyncThunk<
+  Product,
+  { id: number; product: Product },
+  { rejectValue: string }
+>(
   "products/update",
   async ({ id, product }, { rejectWithValue }) => {
     try {
       const res = await api.updateProductApi(id, product);
-      return res.data;
-    } catch {
+      const data = res.data as Product;
+      
+      if (!data.id) data.id = id;
+      return data;
+    } catch (err) {
+      console.error("Update product error:", err);
       return rejectWithValue("Update failed");
     }
   }
 );
+
 
 export const deleteProduct = createAsyncThunk<number, number, { rejectValue: string }>(
   "products/delete",
