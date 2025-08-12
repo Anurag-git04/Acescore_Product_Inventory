@@ -10,12 +10,23 @@ export default function App() {
       <h1>Product Inventory</h1>
       <button onClick={() => setShowAdd(true)} className="mb-3 btn btn-dark">+ Add Product</button>
       {showAdd && (
-        <div style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.4)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 2000 // higher than bootstrap modals (1050)
+          }}
+        >
           <div style={{ background: "#fff", padding: 20, borderRadius: 8, width: 500 }}>
             <ProductForm onClose={() => setShowAdd(false)} />
           </div>
         </div>
       )}
+
       <ProductList />
     </div>
   );
